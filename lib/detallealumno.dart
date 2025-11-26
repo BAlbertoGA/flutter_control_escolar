@@ -8,12 +8,12 @@ class Detallealumno extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var alumno = MyListView.alumnos.firstWhere((element) => element['id'] == id);
+    var alumno = MyListView.alumnos.firstWhere(
+      (element) => element['id'] == id,
+    );
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Detalle del Alumno'),
-      ),
+      appBar: AppBar(title: const Text('Detalle del Alumno')),
       body: Center(
         child: IntrinsicWidth(
           child: IntrinsicHeight(
@@ -71,9 +71,12 @@ class Detallealumno extends StatelessWidget {
                     ],
                   ),
                   child: Row(
-                    mainAxisSize: MainAxisSize.min, // importante para que shrinquee
+                    mainAxisSize:
+                        MainAxisSize.min, // importante para que shrinquee
                     children: [
-                      const Padding(padding: EdgeInsets.symmetric(horizontal: 6)),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 6),
+                      ),
                       Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -88,7 +91,9 @@ class Detallealumno extends StatelessWidget {
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           color: Colors.blue,
-                          borderRadius: const BorderRadius.all(Radius.circular(8)),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(8),
+                          ),
                         ),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -105,7 +110,10 @@ class Detallealumno extends StatelessWidget {
                             const SizedBox(height: 8),
                             Text(
                               'Teléfono: ${alumno['phone']}',
-                              style: const TextStyle(fontSize: 18, color: Colors.black),
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
+                              ),
                             ),
                           ],
                         ),

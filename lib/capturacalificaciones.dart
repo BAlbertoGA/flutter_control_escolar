@@ -6,12 +6,8 @@ class Capturacalificaciones extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Captura de Calificaciones'),
-      ),
-      body: const Center(
-        child: Text('Aquí se capturan las calificaciones.'),
-      ),
+      appBar: AppBar(title: const Text('Captura de Calificaciones')),
+      body: const Center(child: Text('Aquí se capturan las calificaciones.')),
     );
   }
 }

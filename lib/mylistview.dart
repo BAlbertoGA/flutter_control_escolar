@@ -4,36 +4,25 @@ class MyListView extends StatelessWidget {
   const MyListView({super.key});
 
   static const alumnos = [
-    {
-      'id': 1,
-      'name': 'Juan Perez',
-      'phone': 5555,
-    },
-    {
-      'id': 2,
-      'name': 'Maria Lopez Gonzalez',
-      'phone': 3333,
-    },
-    {
-      'id': 3,
-      'name': 'Carlos',
-      'phone': 4444,
-    }
+    {'id': 1, 'name': 'Juan Perez', 'phone': 5555},
+    {'id': 2, 'name': 'Maria Lopez Gonzalez', 'phone': 3333},
+    {'id': 3, 'name': 'Carlos', 'phone': 4444},
   ];
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Control Escolar'),
-      ),
+      appBar: AppBar(title: const Text('Control Escolar')),
       body: SafeArea(
         child: ListView.separated(
           itemBuilder: (_, index) => GestureDetector(
-            onTap: (){
+            onTap: () {
               // Navegar a la pantalla de detalle del alumno
-              Navigator.pushNamed(context, "/rutadetallealumno", arguments: alumnos[index]['id']);
+              Navigator.pushNamed(
+                context,
+                "/rutadetallealumno",
+                arguments: alumnos[index]['id'],
+              );
               print("${alumnos[index]['name']} - ${alumnos[index]['phone']}");
             },
             child: Container(
@@ -55,13 +44,13 @@ class MyListView extends StatelessWidget {
                     blurRadius: 5,
                     offset: Offset(10, 10),
                   ),
-                ]
+                ],
               ),
               margin: const EdgeInsets.all(10),
               alignment: Alignment.center,
               child: Row(
                 children: [
-                  Padding(padding:  const EdgeInsets.only(left: 20)),
+                  Padding(padding: const EdgeInsets.only(left: 20)),
                   //iconos
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -101,15 +90,13 @@ class MyListView extends StatelessWidget {
               ),
             ),
           ),
-          
-          separatorBuilder: (_, int index){
-            return const Divider(
-              height: 2,
-              color: Colors.red,
-            );
+
+          separatorBuilder: (_, int index) {
+            return const Divider(height: 2, color: Colors.red);
           },
-        
-        itemCount: alumnos.length),   
+
+          itemCount: alumnos.length,
+        ),
       ),
     );
   }
