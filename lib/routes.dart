@@ -5,16 +5,16 @@ import 'package:flutter_control_escolar/mylistview.dart';
 
 Map<String, Widget Function(BuildContext)> get appRoutes {
   return {
-    "/rutadetallealumno": (contest) {
-      final id = ModalRoute.of(contest)!.settings.arguments as int;
+    "/rutadetallealumno": (context) {
+      final id = ModalRoute.of(context)!.settings.arguments as int;
       return Detallealumno(id: id);
     },
 
-    "/rutacapturacalificaciones": (contest) {
+    "/rutacapturacalificaciones": (context) {
       return const Capturacalificaciones();
     },
 
-    "/rutalistaalumnos": (contest) {
+    "/rutalistaalumnos": (context) {
       return MyListView();
     },
   };

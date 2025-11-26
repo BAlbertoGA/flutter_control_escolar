@@ -19,15 +19,21 @@ class Drawer extends StatelessWidget {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
+              // Usar una imagen de fondo
+              image: DecorationImage(
+                image: AssetImage('assets/images/imagen1.jpg'),
+                fit: BoxFit.fill,
+              ),
             ),
             child: Text(
               'Control Escolar',
               style: TextStyle(color: Colors.white, fontSize: 24),
             ),
           ),
+          // Listas de opciones del Drawer
           ListTile(
             leading: const Icon(Icons.home),
-            title: const Text('Inicio'),
+            title: const Text('Alumnos'),
             onTap: () {
               Navigator.pop(context, '/rutalistaalumnos');
             },
