@@ -17,6 +17,7 @@ class MyListView extends StatelessWidget {
         title: const Text('Control Escolar'),
       ),
       drawer: MyDrawer(),
+      // endDrawer: MyDrawer(),
       body: SafeArea(
         child: ListView.separated(
           itemBuilder: (_, index) => GestureDetector(
