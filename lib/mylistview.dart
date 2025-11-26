@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_control_escolar/drawer.dart';
 
 class MyListView extends StatelessWidget {
   const MyListView({super.key});
@@ -12,7 +13,10 @@ class MyListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Control Escolar')),
+      appBar: AppBar(
+        title: const Text('Control Escolar'),
+      ),
+      drawer: MyDrawer(),
       body: SafeArea(
         child: ListView.separated(
           itemBuilder: (_, index) => GestureDetector(

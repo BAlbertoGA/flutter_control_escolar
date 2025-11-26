@@ -1,48 +1,40 @@
 import 'package:flutter/material.dart';
 
-class Drawer extends StatelessWidget {
-  const Drawer({super.key, required ListView child});
+class MyDrawer extends StatelessWidget {
+  const MyDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          const DrawerHeader(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Color.fromARGB(255, 94, 220, 217),
-                  Color.fromARGB(255, 0, 150, 136),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
+        children: [
+          DrawerHeader(
+            child: Center(
+              child: Text(
+                "Control Escolar",
+                style: TextStyle(color: Colors.blueGrey, fontSize: 20),
               ),
-              // Usar una imagen de fondo
+            ),
+            decoration: BoxDecoration(
+              color: Colors.blue,
               image: DecorationImage(
-                image: AssetImage('assets/images/imagen1.jpg'),
+                image: AssetImage('assets/imagen1.jpg'),
                 fit: BoxFit.fill,
               ),
             ),
-            child: Text(
-              'Control Escolar',
-              style: TextStyle(color: Colors.white, fontSize: 24),
-            ),
           ),
-          // Listas de opciones del Drawer
           ListTile(
-            leading: const Icon(Icons.home),
-            title: const Text('Alumnos'),
+            leading: Icon(Icons.home),
+            title: Text("Lista alumnos"),
             onTap: () {
-              Navigator.pop(context, '/rutalistaalumnos');
+              Navigator.pushNamed(context, '/rutalistaalumnos');
             },
           ),
           ListTile(
-            leading: const Icon(Icons.school),
-            title: const Text('Captura de Calificaciones'),
+            leading: Icon(Icons.account_box),
+            title: Text("Captura calificaciones"),
             onTap: () {
-              Navigator.pushNamed(context, '/capturacalificaciones');
+              Navigator.pushNamed(context, '/rutacapturacalificaciones');
             },
           ),
         ],
