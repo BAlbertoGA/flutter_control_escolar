@@ -24,6 +24,7 @@ class MyDrawer extends StatelessWidget {
             ),
           ),
           // Sección de Gestión de alumnos con submenú
+          /*
           ExpansionTile(
             leading: const Icon(Icons.manage_accounts),
             title: const Text('Gestión de alumnos'),
@@ -49,6 +50,80 @@ class MyDrawer extends StatelessWidget {
               ),
             ],
           ),
+          */
+          Container(
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.grey,
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black,
+                  blurRadius: 10,
+                  offset: Offset(4, 4),
+                ),
+              ],
+            ),
+             child: ListTile(
+              leading: Icon(Icons.home),
+              title: Text("Lista alumnos"),
+              onTap: () {
+                Navigator.pop(context); // Cerrar el drawer
+                Navigator.pushNamed(context, '/rutalistaalumnos');
+              },
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.grey,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black,
+                  blurRadius: 10,
+                  offset: Offset(4, 4),
+                ),
+              ],
+            ),
+            child: ListTile(
+              leading: Icon(Icons.account_box),
+              title: Text("Captura calificaciones"),
+              onTap: () {
+                Navigator.pop(context); // Cerrar el drawer
+                Navigator.pushNamed(context, '/rutacapturacalificaciones');
+              },
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.grey,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black,
+                  blurRadius: 10,
+                  offset: Offset(4, 4),
+                ),
+              ],
+            ),
+            child: ListTile(
+              leading: Icon(Icons.book),
+              title: Text("Lista Materias"),
+              onTap: () {
+                Navigator.pop(context); // Cerrar el drawer
+                Navigator.pushNamed(context, '/rutaMaterias');
+              },
+            ),
+          ),
+          /*
           ListTile(
             leading: Icon(Icons.home),
             title: Text("Lista alumnos"),
@@ -65,6 +140,15 @@ class MyDrawer extends StatelessWidget {
               Navigator.pushNamed(context, '/rutacapturacalificaciones');
             },
           ),
+          ListTile(
+            leading: Icon(Icons.book),
+            title: Text("Lista Materias"),
+            onTap: () {
+              Navigator.pop(context); // Cerrar el drawer
+              Navigator.pushNamed(context, '/rutaMaterias');
+            },
+          ),
+          */
         ],
       ),
     );

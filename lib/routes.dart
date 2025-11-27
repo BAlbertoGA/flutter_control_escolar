@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_control_escolar/capturacalificaciones.dart';
 import 'package:flutter_control_escolar/detalleAlumno.dart';
+import 'package:flutter_control_escolar/materias.dart';
 import 'package:flutter_control_escolar/mylistview.dart';
 
 Map<String, Widget Function(BuildContext)> get appRoutes {
@@ -16,6 +17,10 @@ Map<String, Widget Function(BuildContext)> get appRoutes {
 
     "/rutalistaalumnos": (context) {
       return MyListView();
+    },
+
+    "/rutaMaterias": (context) {
+      return const MyMaterias();
     },
   };
 }

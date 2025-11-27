@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_control_escolar/drawer.dart';
 import 'package:flutter_control_escolar/mylistview.dart';
 
 class Detallealumno extends StatelessWidget {
@@ -13,7 +14,19 @@ class Detallealumno extends StatelessWidget {
     );
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Detalle del Alumno')),
+      appBar: AppBar(
+        title: const Text('Detalle del Alumno'),
+        // Agregar botón de retroceso
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back_ios_new),
+          ),
+        ],
+      ),
+      drawer: MyDrawer(),
       body: Center(
         child: IntrinsicWidth(
           child: IntrinsicHeight(
