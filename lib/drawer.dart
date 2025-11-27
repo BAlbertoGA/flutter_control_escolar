@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_control_escolar/routes.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -69,7 +70,7 @@ class MyDrawer extends StatelessWidget {
               title: Text("Lista alumnos"),
               onTap: () {
                 Navigator.pop(context); // Cerrar el drawer
-                Navigator.pushNamed(context, '/rutalistaalumnos');
+                Navigator.pushNamed(context, AppRoutes.rutaListaAlumnos);
               },
             ),
           ),
@@ -94,7 +95,7 @@ class MyDrawer extends StatelessWidget {
               title: Text("Captura calificaciones"),
               onTap: () {
                 Navigator.pop(context); // Cerrar el drawer
-                Navigator.pushNamed(context, '/rutacapturacalificaciones');
+                Navigator.pushNamed(context, AppRoutes.rutaCapturaCalificaciones);
               },
             ),
           ),
@@ -119,7 +120,7 @@ class MyDrawer extends StatelessWidget {
               title: Text("Lista Materias"),
               onTap: () {
                 Navigator.pop(context); // Cerrar el drawer
-                Navigator.pushNamed(context, '/rutaMaterias');
+                Navigator.pushNamed(context, AppRoutes.rutaMaterias);
               },
             ),
           ),

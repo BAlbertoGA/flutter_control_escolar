@@ -113,6 +113,7 @@ class _MyListViewState extends State<MyListView> {
           itemCount: MyListView.alumnos.length,
         ),
       ),
+      floatingActionButton: getBottonFloatNuevoAlumno(),
     );
   }
 
@@ -140,9 +141,65 @@ class _MyListViewState extends State<MyListView> {
       trailing: Wrap(
         spacing: 0,
         children: [
-          IconButton(onPressed: () {},icon:  Icon(Icons.delete), tooltip: "Eliminar",),
-          IconButton(onPressed: () {},icon:  Icon(Icons.edit), tooltip: "Elitar",)],
+          IconButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => getAlert(index, context),
+              );
+            },
+            icon: Icon(Icons.delete),
+            tooltip: "Eliminar",
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                AppRoutes.rutaFormularioAlumno,
+                arguments: MyListView.alumnos[index]['id'],
+              );
+            },
+            icon: Icon(Icons.edit),
+            tooltip: "Elitar",
+          ),
+        ],
       ),
+    );
+  }
+
+  // Crea una ventana de alerta
+  getAlert(index, context) {
+    return AlertDialog(
+      title: const Text("Desea Eliminar?"),
+      content: Text("Se eliminara ${MyListView.alumnos[index]['name']}"),
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context, 'Cancelar');
+          },
+          child: const Text('Cancelar'),
+        ),
+        TextButton(
+          onPressed: () {
+            setState(() {
+              MyListView.alumnos.removeWhere(
+                (item) => item['id'] == MyListView.alumnos[index]['id'],
+              );
+              Navigator.pop(context, 'OK');
+            });
+          },
+          child: const Text('Aceptar'),
+        ),
+      ],
+    );
+  }
+
+  getBottonFloatNuevoAlumno() {
+    return FloatingActionButton(
+      onPressed: () {
+        Navigator.pushNamed(context, AppRoutes.rutaFormularioAlumno);
+      },
+      child: const Icon(Icons.add),
     );
   }
 }
