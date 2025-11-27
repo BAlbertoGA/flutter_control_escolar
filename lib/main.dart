@@ -15,7 +15,7 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Flutter Control Escolar",
       home: const MyListView(),
-      routes: appRoutes,
+      routes: AppRoutes.appRoutes,
     );
   }
 }

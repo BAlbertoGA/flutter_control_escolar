@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_control_escolar/drawer.dart';
 
 class Capturacalificaciones extends StatelessWidget {
   const Capturacalificaciones({super.key});
@@ -17,6 +18,7 @@ class Capturacalificaciones extends StatelessWidget {
           ),
         ],
       ),
+      drawer: MyDrawer(),
       body: Center(
         // Usamos un Stack para superponer widgets
         child: Stack(

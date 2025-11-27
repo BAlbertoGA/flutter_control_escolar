@@ -1,26 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_control_escolar/altaalumno.dart';
 import 'package:flutter_control_escolar/capturacalificaciones.dart';
 import 'package:flutter_control_escolar/detalleAlumno.dart';
 import 'package:flutter_control_escolar/materias.dart';
 import 'package:flutter_control_escolar/mylistview.dart';
 
-Map<String, Widget Function(BuildContext)> get appRoutes {
-  return {
-    "/rutadetallealumno": (context) {
-      final id = ModalRoute.of(context)!.settings.arguments as int;
-      return Detallealumno(id: id);
-    },
+class AppRoutes {
+  static const String rutaDetalleAlumno = "/rutadetallealumno";
+  static const String rutaCapturaCalificaciones = "/rutacapturacalificaciones";
+  static const String rutaListaAlumnos = "/rutalistaalumnos";
+  static const String rutaMaterias = "/rutaMaterias";
+  static const String rutaAltaAlumno = "/rutaAltaAlumno";
 
-    "/rutacapturacalificaciones": (context) {
-      return const Capturacalificaciones();
-    },
 
-    "/rutalistaalumnos": (context) {
-      return MyListView();
-    },
+  static Map<String, Widget Function(BuildContext)> get appRoutes {
+    return {
+      rutaDetalleAlumno: (context) {
+        final id = ModalRoute.of(context)!.settings.arguments as int;
+        return Detallealumno(id: id);
+      },
 
-    "/rutaMaterias": (context) {
-      return const MyMaterias();
-    },
-  };
+      rutaCapturaCalificaciones: (context) {
+        return const Capturacalificaciones();
+      },
+
+      rutaListaAlumnos: (context) {
+        return MyListView();
+      },
+
+      rutaMaterias: (context) {
+        return const MyMaterias();
+      },
+
+      rutaAltaAlumno: (context) {
+        return const AltaAlumno();
+      },
+    };
+  }
 }

@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_control_escolar/drawer.dart';
 
-class MyMaterias extends StatelessWidget {
+class MyMaterias extends StatefulWidget {
   const MyMaterias({super.key});
 
+  @override
+  State<MyMaterias> createState() => _MyMateriasState();
+}
+
+class _MyMateriasState extends State<MyMaterias> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +23,7 @@ class MyMaterias extends StatelessWidget {
           ),
         ],
       ),
-      drawer: MyMaterias(),
+      drawer: MyDrawer(),
       body: Center(
         child: Stack(
           alignment: Alignment.bottomCenter,
