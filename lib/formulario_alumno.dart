@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_control_escolar/drawer.dart';
 import 'package:flutter_control_escolar/mylistview.dart';
 
@@ -51,11 +52,14 @@ class MyFormularioAlumnoState extends State<MyFormularioAlumno> {
                 controller: crtlId, //Agrega el valor de los controllers
                 decoration: InputDecoration(label: Text("ID")),
                 keyboardType: TextInputType.number,
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                ],
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Ingrese el ID';
                   }
-                  if (int.parse(value) == null) {
+                  if (int.tryParse(value) == null) {
                     return 'El ID debe ser numerico';
                   }
 
@@ -66,27 +70,48 @@ class MyFormularioAlumnoState extends State<MyFormularioAlumno> {
                 controller: crtlNombre, //Agrega el valor de los controllers
                 decoration: InputDecoration(label: Text("Nombre")),
                 keyboardType: TextInputType.text,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Ingrese un nombre';
+                  }
+                  return null;
+                },
               ),
               TextFormField(
                 controller: crtlTelefono, //Agrega el valor de los controllers
                 decoration: InputDecoration(label: Text("Telefono")),
                 keyboardType: TextInputType.phone,
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                ],
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Ingrese un numero de telefono';
+                  }
+                  if (int.tryParse(value) == null) {
+                    return 'El telefono debe ser numerico';
+                  }
+
+                  return null;
+                },
               ),
               SizedBox(height: 50),
               ElevatedButton(
                 onPressed: () {
-                  String idAlumno = crtlId.text;
-                  String nombreAlumno = crtlNombre.text;
-                  String telefonoAlumno = crtlTelefono.text;
+                  if (_formKey.currentState!.validate()) {
+                    String idAlumno = crtlId.text;
+                    String nombreAlumno = crtlNombre.text;
+                    String telefonoAlumno = crtlTelefono.text;
 
-                  if (!nuevoAlumno) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Datos Actualizados')),
-                    );
-                  } else {
-                    ScaffoldMessenger.of(
-                      context,
-                    ).showSnackBar(SnackBar(content: Text('Alumno Agregado')));
+                    if (!nuevoAlumno) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Datos Actualizados')),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Alumno Agregado')),
+                      );
+                    }
                   }
                 },
                 child: Text(nuevoAlumno ? "Enviar" : "Actualizar Alumno"),
