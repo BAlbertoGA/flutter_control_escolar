@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_control_escolar/drawer.dart';
 import 'package:flutter_control_escolar/mylistview.dart';
+import 'package:flutter_control_escolar/routes.dart';
 
 class MyFormularioAlumno extends StatefulWidget {
   const MyFormularioAlumno({super.key});
@@ -108,10 +109,16 @@ class MyFormularioAlumnoState extends State<MyFormularioAlumno> {
                         SnackBar(content: Text('Datos Actualizados')),
                       );
                     } else {
+                      MyListView.alumnos.add({
+                        'id': int.parse(idAlumno),
+                        'name': nombreAlumno,
+                        'phone': int.parse(telefonoAlumno),
+                      });
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text('Alumno Agregado')),
                       );
                     }
+                    Navigator.pushNamed(context, AppRoutes.rutaListaAlumnos);
                   }
                 },
                 child: Text(nuevoAlumno ? "Enviar" : "Actualizar Alumno"),
