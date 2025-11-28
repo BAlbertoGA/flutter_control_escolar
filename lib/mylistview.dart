@@ -6,9 +6,9 @@ class MyListView extends StatefulWidget {
   const MyListView({super.key});
 
   static List alumnos = [
-    {'id': 1, 'name': 'Bryan', 'phone': 5555},
-    {'id': 2, 'name': 'Alejandra', 'phone': 3333},
-    {'id': 3, 'name': 'Carlos', 'phone': 4444},
+    {'id': 1, 'name': 'Bryan', 'phone': 5555, 'genero': 'Hombre'},
+    {'id': 2, 'name': 'Alejandra', 'phone': 3333, 'genero': 'Mujer'},
+    {'id': 3, 'name': 'Carlos', 'phone': 4444, 'genero': 'Hombre'},
   ];
 
   @override

@@ -16,7 +16,11 @@ class MyFormularioAlumnoState extends State<MyFormularioAlumno> {
   final crtlId = TextEditingController();
   final crtlNombre = TextEditingController();
   final crtlTelefono = TextEditingController();
+  // final crtlGenero = TextEditingController();
   bool nuevoAlumno = true;
+  String? _selectedValue;
+  String? _generoActualizado;
+  final List<String> _options = ['Hombre', 'Mujer', 'Otro'];
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +33,7 @@ class MyFormularioAlumnoState extends State<MyFormularioAlumno> {
       crtlId.text = alumnoLista['id'].toString();
       crtlNombre.text = alumnoLista['name'];
       crtlTelefono.text = alumnoLista['phone'].toString();
+      _selectedValue = alumnoLista['genero'].toString();
     }
     return Scaffold(
       appBar: AppBar(
@@ -97,6 +102,47 @@ class MyFormularioAlumnoState extends State<MyFormularioAlumno> {
                   return null;
                 },
               ),
+              SizedBox(height: 10),
+              // DropdownButton<String>(
+              //   hint: Text('Elige un genero'),
+              //   value: _selectedValue,
+              //   items: _options.map((String genero) {
+              //     return DropdownMenuItem<String>(
+              //       value: genero,
+              //       child: Text(genero),
+              //     );
+              //   }).toList(),
+              //   onChanged: (value) {
+              //     setState(() {
+              //       _selectedValue = value;
+              //     });
+              //     print(value);
+              //   },
+              // ),
+              DropdownButtonFormField(
+                decoration: InputDecoration(
+                  labelText: "Elegir un genero",
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.person_4_sharp),
+                ),
+                value: _selectedValue,
+                items: _options.map((String genero) {
+                  return DropdownMenuItem<String>(
+                    value: genero,
+                    child: Text(genero),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  setState(() {
+                    _selectedValue = value;
+                  });
+                  print(_selectedValue);
+                  _generoActualizado = _selectedValue;
+                },
+                validator: (value) =>
+                    value == null ? 'Falta elegir un genero' : null,
+              ),
+
               SizedBox(height: 50),
               ElevatedButton(
                 onPressed: () {
@@ -106,13 +152,14 @@ class MyFormularioAlumnoState extends State<MyFormularioAlumno> {
                     String telefonoAlumno = crtlTelefono.text;
 
                     if (!nuevoAlumno) {
-                      int indexAlumno=MyListView.alumnos.indexWhere(
-                        (alumno)=>alumno['id']==id
+                      int indexAlumno = MyListView.alumnos.indexWhere(
+                        (alumno) => alumno['id'] == id,
                       );
-                      MyListView.alumnos[indexAlumno]={
+                      MyListView.alumnos[indexAlumno] = {
                         'id': int.parse(idAlumno),
                         'name': nombreAlumno,
                         'phone': int.parse(telefonoAlumno),
+                        'genero': _generoActualizado,
                       };
 
                       ScaffoldMessenger.of(context).showSnackBar(
