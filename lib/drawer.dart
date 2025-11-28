@@ -124,6 +124,31 @@ class MyDrawer extends StatelessWidget {
               },
             ),
           ),
+          Container(
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.grey,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black,
+                  blurRadius: 10,
+                  offset: Offset(4, 4),
+                ),
+              ],
+            ),
+            child: ListTile(
+              leading: Icon(Icons.book),
+              title: Text("Lista Tareas"),
+              onTap: () {
+                Navigator.pop(context); // Cerrar el drawer
+                Navigator.pushNamed(context, AppRoutes.rutaTareas);
+              },
+            ),
+          ),
           /*
           ListTile(
             leading: Icon(Icons.home),

@@ -3,6 +3,8 @@ import 'package:flutter_control_escolar/altaalumno.dart';
 import 'package:flutter_control_escolar/capturacalificaciones.dart';
 import 'package:flutter_control_escolar/detalleAlumno.dart';
 import 'package:flutter_control_escolar/formulario_alumno.dart';
+import 'package:flutter_control_escolar/formulariotareas.dart';
+import 'package:flutter_control_escolar/listatareas.dart';
 import 'package:flutter_control_escolar/materias.dart';
 import 'package:flutter_control_escolar/mylistview.dart';
 
@@ -13,6 +15,9 @@ class AppRoutes {
   static const String rutaMaterias = "/rutaMaterias";
   static const String rutaAltaAlumno = "/rutaAltaAlumno";
   static const String rutaFormularioAlumno = "/rutaFormularioAlumnos";
+
+  static const String rutaTareas = "/rutaTareas";
+  static const String rutaFormTareas = "/rutaFormTareas";
 
   static final Map<String, Widget Function(BuildContext)> appRoutes = {
     rutaDetalleAlumno: (context) {
@@ -39,5 +44,15 @@ class AppRoutes {
     rutaFormularioAlumno: (context) {
       return const MyFormularioAlumno();
     },
+
+    rutaTareas: (context) {
+      return const MyListaTareas();
+    },
+
+    rutaFormTareas: (context) {
+      return const MyFormularioTareas();
+    },
+
+
   };
 }

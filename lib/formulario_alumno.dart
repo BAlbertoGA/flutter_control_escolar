@@ -16,7 +16,6 @@ class MyFormularioAlumnoState extends State<MyFormularioAlumno> {
   final crtlId = TextEditingController();
   final crtlNombre = TextEditingController();
   final crtlTelefono = TextEditingController();
-  // final crtlGenero = TextEditingController();
   bool nuevoAlumno = true;
   String? _selectedValue;
   String? _generoActualizado;
