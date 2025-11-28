@@ -50,6 +50,7 @@ class MyFormularioAlumnoState extends State<MyFormularioAlumno> {
           child: Column(
             children: [
               TextFormField(
+                enabled: nuevoAlumno,
                 controller: crtlId, //Agrega el valor de los controllers
                 decoration: InputDecoration(label: Text("ID")),
                 keyboardType: TextInputType.number,
@@ -105,6 +106,15 @@ class MyFormularioAlumnoState extends State<MyFormularioAlumno> {
                     String telefonoAlumno = crtlTelefono.text;
 
                     if (!nuevoAlumno) {
+                      int indexAlumno=MyListView.alumnos.indexWhere(
+                        (alumno)=>alumno['id']==id
+                      );
+                      MyListView.alumnos[indexAlumno]={
+                        'id': int.parse(idAlumno),
+                        'name': nombreAlumno,
+                        'phone': int.parse(telefonoAlumno),
+                      };
+
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text('Datos Actualizados')),
                       );
